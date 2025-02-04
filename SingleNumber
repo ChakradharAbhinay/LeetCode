@@ -1,0 +1,105 @@
+//136. Single Number
+//
+//        Description:
+//        Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+//
+//        You must implement a solution with a linear runtime complexity and use only constant extra space.
+//
+//
+//
+//        Example 1:
+//
+//        Input: nums = [2,2,1]
+//
+//        Output: 1
+//
+//        Example 2:
+//
+//        Input: nums = [4,1,2,1,2]
+//
+//        Output: 4
+//
+//        Example 3:
+//
+//        Input: nums = [1]
+//
+//        Output: 1
+//
+//
+//
+//        Constraints:
+//
+//        1 <= nums.length <= 3 * 104
+//        -3 * 104 <= nums[i] <= 3 * 104
+//        Each element in the array appears twice except for one element which appears only once.
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        int k=0;//i can use i or j also bcos out of scope
+        if(nums.length==1){
+            return nums[k];
+        }
+
+        // for(int i=0;i<nums.length;i++){
+        //     for(int j=0;j<i;j++){
+        //         if(nums[i]!=nums[j])
+        //         return nums[i];
+        //     }
+        // }
+        // return 0;
+for(int i=0;i<nums.length;i++){
+for(int j=0;j<nums.length;j++){
+    if(nums[i]==nums[j] && i!=j ){
+       break;
+    }
+    if(j==nums.length-1 && nums[i]!=nums[j] ){
+        return nums[i];
+    }
+
+    }
+}
+return 0;
+}
+}
+
+
+
+
+
+
+//by using XOR
+
+// class Solution {
+// public int singleNumber(int[] nums) {
+// int n= nums[0];
+// for(int i=1;i<nums.length;i++){
+// n=n^nums[i];
+// }
+// return n;
+// }
+// }
+
+
+
+// for Input: nums = [4,1,2,1,2]
+// 100 ^ 001 = 101 
+// 101 ^ 010 = 111
+// 111 ^ 001 = 110
+// 110 ^ 010 = 100
+
+// for Input: nums = [2,2,1]
+// 010 ^ 010 = 000
+// 000 ^ 001 = 001
+
+
+// i=0,j=0
+// i=1 j=0
+// int =1 j=1 move out
+// int i=3 j=0
+
+
+// [4,1,2,1,2]
+// i=0 j=0
+// int =1
+// i =1 j=0
+
